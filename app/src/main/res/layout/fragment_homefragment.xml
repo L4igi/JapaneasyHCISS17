@@ -118,6 +118,24 @@
                     tools:layout_editor_absoluteY="89dp"
                     tools:layout_editor_absoluteX="180dp" />
 
+                <TextView
+                    android:id="@+id/Parktext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Park"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="@+id/imageViewPark"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintHorizontal_bias="0.2" />
+
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
@@ -230,6 +248,24 @@
                     tools:layout_editor_absoluteY="320dp"
                     tools:layout_editor_absoluteX="180dp" />
 
+                <TextView
+                    android:id="@+id/Restauranttext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Restaurant"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewRestaurant"
+                    android:textColor="@android:color/white"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.2" />
+
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
@@ -255,7 +291,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0"
-                    app:srcCompat="@drawable/park" />
+                    app:srcCompat="@drawable/university" />
 
                 <ImageButton
                     android:id="@+id/imageButton5"
@@ -332,6 +368,24 @@
                     app:layout_constraintGuide_begin="120dp"
                     tools:layout_editor_absoluteX="8dp"
                     tools:layout_editor_absoluteY="671dp" />
+
+                <TextView
+                    android:id="@+id/unitext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Universität"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@android:color/white"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/guideline"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.2" />
 
                 <android.support.constraint.Guideline
                     android:id="@+id/guideline2"
