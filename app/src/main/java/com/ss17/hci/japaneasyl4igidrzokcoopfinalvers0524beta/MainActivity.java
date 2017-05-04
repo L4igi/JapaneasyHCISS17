@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_lernen) {
 
-            setTitle("Wörterbuch");
+            setTitle("Lernen");
            LearnFrag learnFrag=new LearnFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).commit();
