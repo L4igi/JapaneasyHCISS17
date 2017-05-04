@@ -79,17 +79,29 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_wörterbuch) {
+
             setTitle("Wörterbuch");
             DictionaryFrag dictionaryFrag=new DictionaryFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, dictionaryFrag).commit();
 
-        } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_lernen) {
 
-        } else if (id == R.id.nav_manage) {
+            setTitle("Wörterbuch");
+           LearnFrag learnFrag=new LearnFrag();
+            FragmentManager fragmentManager= getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).commit();
+
+        } else if (id == R.id.nav_nearby) {
+
+            setTitle("Nearby");
+            Homefragment homefragment=new Homefragment();
+            FragmentManager fragmentManager= getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).commit();
+
+        } else if (id == R.id.nav_einstellungen) {
 
         }
 
