@@ -1,8 +1,10 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
+import android.graphics.Path;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -81,6 +83,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            setTitle("Wörterbuch");
+            DictionaryFrag dictionaryFrag=new DictionaryFrag();
+            FragmentManager fragmentManager= getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.fragment, dictionaryFrag).commit();
+
 
         } else if (id == R.id.nav_gallery) {
 
