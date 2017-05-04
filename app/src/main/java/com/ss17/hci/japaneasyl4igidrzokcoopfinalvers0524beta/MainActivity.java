@@ -34,6 +34,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        setTitle("Nearby");
+        Homefragment homefragment=new Homefragment();
+        FragmentManager fragmentManager= getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).commit();
     }
 
     @Override
