@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity
         fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).commit();
 
 
+
     }
 
     @Override
