@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, dictionaryFrag).commit();
 
-
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
