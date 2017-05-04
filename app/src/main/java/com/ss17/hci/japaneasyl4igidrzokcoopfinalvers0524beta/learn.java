@@ -15,7 +15,7 @@ public class learn extends Fragment {
 
 
     public learn() {
-        // Required empty public constructor 
+        // Required empty public constructor
     }
 
 
