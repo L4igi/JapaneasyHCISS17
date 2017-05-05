@@ -34,12 +34,14 @@
                     app:srcCompat="@drawable/park" />
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/PardDicitonaryButton"
                     android:layout_width="51dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toTopOf="@+id/textView3"
@@ -48,12 +50,10 @@
                     app:layout_constraintRight_toLeftOf="@+id/guideline2"
                     app:layout_constraintTop_toTopOf="@+id/guideline"
                     app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/bookicon"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp" />
+                    app:srcCompat="@drawable/bookicon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
+                    android:id="@+id/ParkLearnButton"
                     android:layout_width="51dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="8dp"
@@ -164,7 +164,7 @@
                     app:srcCompat="@drawable/restaurantheader" />
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/RestaurantDictionaryButton"
                     android:layout_width="51dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="8dp"
@@ -183,7 +183,7 @@
                     app:srcCompat="@drawable/bookicon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/RestaurantLearnButton"
                     android:layout_width="51dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="8dp"
@@ -294,7 +294,7 @@
                     app:srcCompat="@drawable/university" />
 
                 <ImageButton
-                    android:id="@+id/imageButton5"
+                    android:id="@+id/UniversityDictionaryButton"
                     android:layout_width="51dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="8dp"
@@ -313,7 +313,7 @@
                     app:srcCompat="@drawable/bookicon" />
 
                 <ImageButton
-                    android:id="@+id/imageButton6"
+                    android:id="@+id/UniversityLearnButton"
                     android:layout_width="51dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="8dp"
