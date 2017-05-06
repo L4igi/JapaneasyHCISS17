@@ -36,7 +36,7 @@
 
                 <ImageButton
                     android:id="@+id/PardDicitonaryButton"
-                    android:layout_width="70dp"
+                    android:layout_width="51dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
