@@ -17,10 +17,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
-//Test comment for test push
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final CharacterContents allChars = new CharacterContents();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +92,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_lernen) {
 
-            setTitle("Basics Lernen");
-           LearnFrag learnFrag=new LearnFrag();
+            setTitle("Lernen");
+            LearnFrag learnFrag=new LearnFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).commit();
 
