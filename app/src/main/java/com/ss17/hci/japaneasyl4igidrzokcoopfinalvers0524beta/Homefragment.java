@@ -3,6 +3,7 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,4 +27,9 @@ public class Homefragment extends Fragment {
         return inflater.inflate(R.layout.fragment_homefragment, container, false);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("Homefragment", "onResume()");
+    }
 }

@@ -1,10 +1,12 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
+import android.content.SharedPreferences;
 import android.graphics.Path;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,11 +18,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.TextView;
 
 //Test comment for test push
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final String PREFS_NAME = "japaneasyPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +48,6 @@ public class MainActivity extends AppCompatActivity
         Homefragment homefragment=new Homefragment();
         FragmentManager fragmentManager= getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).commit();
-
-
-
     }
 
 
@@ -113,6 +115,18 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+ /*   @Override
+    public void onDrawerSlide(View drawerView, float slideOffset) {
+        Log.i("Mainacitvity", "onDrawerSlide()");
+        if(slideOffset != 0.0) {
+            SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
+            String name = settings.getString(SettingsFrag.USER_NAME, null);
+            if(name == null)
+                name = "Name";
+            TextView nameText = (TextView) findViewById(R.id.user_name);
+            nameText.setText(name);
+        }
+    }*/
 
 
 }

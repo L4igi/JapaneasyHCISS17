@@ -30,11 +30,11 @@
         app:srcCompat="@drawable/pic_1" />
 
     <TextView
-        android:id="@+id/Username"
+        android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="User Name"
+        android:text="Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 </LinearLayout>
