@@ -42,7 +42,7 @@ public class DictionaryFrag extends Fragment {
         groups = new String[]{"Basics", "Park", "Restaurant", "University"};
 
         children = new String[][]{
-                {"Hello","Good Morning","Good Evening","Thank You"},
+                {" 進撃の巨人","Good Morning","Good Evening","Thank You"},
                 {"Baum","Gras","Spielplatz","Sonnenschein"},
                 {"Nachtisch","Wein","Rechnung"},
                 {"Lernen","Vorlesug","Kaoru"}

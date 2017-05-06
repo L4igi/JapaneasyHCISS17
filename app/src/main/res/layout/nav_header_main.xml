@@ -37,4 +37,11 @@
         android:text="User Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
+    <ProgressBar
+        android:id="@+id/learncreditbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15" />
+
 </LinearLayout>
