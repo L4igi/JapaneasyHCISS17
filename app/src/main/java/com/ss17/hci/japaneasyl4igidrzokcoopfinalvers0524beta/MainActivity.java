@@ -17,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
+//Test comment for test push
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_lernen) {
 
-            setTitle("Lernen");
+            setTitle("Basics Lernen");
            LearnFrag learnFrag=new LearnFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).commit();
