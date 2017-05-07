@@ -3,6 +3,8 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,6 +36,7 @@ public class DictionaryFrag extends Fragment {
     ExpandableListView lv;
     private String[] groups;
     private String[][] children;
+    private String[][] turned = new String[4][10];
 
 
     public DictionaryFrag() {
@@ -69,8 +73,20 @@ public class DictionaryFrag extends Fragment {
         lv.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                //TODO: handle child click
-                //lv.getAdapter().getChild(groupPosition, childPosition);
+                Log.d("Testing", "" + groupPosition);
+                TextView tv= (TextView) v.findViewById(R.id.itemtext);
+                CharacterContents.Pair answers = allChars.getMapping(groupPosition, (String)tv.getText());
+                //TODO: Prettify output
+                String answer = "";
+                for (String meaning:answers.getFirst()) {
+                    answer += meaning + ", ";
+                }
+                answer = answer.substring(0, answer.length() - 2) + "\n";
+                for (String pronounce:answers.getSecond()) {
+                    answer += pronounce + ", ";
+                }
+                answer = answer.substring(0, answer.length() - 2);
+                tv.setText(answer);
                 return false;
             }
         });
@@ -125,9 +141,10 @@ public class DictionaryFrag extends Fragment {
         }
 
         @Override
-        public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View holderText, ViewGroup parent) {
 
             ViewHolder holder;
+            View convertView = null;
             if (convertView == null) {
                 convertView = inf.inflate(R.layout.exp_list_item, parent, false);
                 holder = new ViewHolder();
@@ -137,7 +154,7 @@ public class DictionaryFrag extends Fragment {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
+            holderText = holder.text;
             holder.text.setText(getChild(groupPosition, childPosition).toString());
 
             return convertView;
