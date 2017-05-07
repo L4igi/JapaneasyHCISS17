@@ -76,21 +76,28 @@ public class DictionaryFrag extends Fragment {
         lv.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Log.d("Testing", "" + groupPosition);
-                TextView tv= (TextView) v.findViewById(R.id.itemtext);
-                CharacterContents.Pair answers = allChars.getMapping(groupPosition, (String)tv.getText());
-                //TODO: Prettify output
-                String answer = "";
-                for (String meaning:answers.getFirst()) {
-                    answer += meaning + ", ";
+                //Log.d("Testing", turned[groupPosition][childPosition]);
+                TextView tv = (TextView) v.findViewById(R.id.itemtext);
+                if(turned[groupPosition][childPosition] == null) {
+                    Log.d("Testing", "alrighty");
+                    CharacterContents.Pair answers = allChars.getMapping(groupPosition, (String) tv.getText());
+                    turned[groupPosition][childPosition] = tv.getText().toString();
+                    //TODO: Prettify output
+                    String answer = "";
+                    for (String meaning : answers.getFirst()) {
+                        answer += meaning + ", ";
+                    }
+                    answer = answer.substring(0, answer.length() - 2) + "\n";
+                    for (String pronounce : answers.getSecond()) {
+                        answer += pronounce + ", ";
+                    }
+                    answer = answer.substring(0, answer.length() - 2);
+                    tv.setText(answer);
+                }else {
+                    tv.setText(turned[groupPosition][childPosition]);
+                    turned[groupPosition][childPosition] = null;
                 }
-                answer = answer.substring(0, answer.length() - 2) + "\n";
-                for (String pronounce:answers.getSecond()) {
-                    answer += pronounce + ", ";
-                }
-                answer = answer.substring(0, answer.length() - 2);
-                tv.setText(answer);
-                return false;
+                return true;
             }
         });
 
