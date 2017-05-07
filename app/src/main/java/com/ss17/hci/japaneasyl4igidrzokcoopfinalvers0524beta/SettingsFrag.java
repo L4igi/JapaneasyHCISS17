@@ -161,7 +161,6 @@ public class SettingsFrag extends Fragment {
                 editor.commit();
             }
         });
-        // Inflate the layout for this fragment
         return view;
 
     }
@@ -190,6 +189,7 @@ public class SettingsFrag extends Fragment {
             case 7: profilePic.setImageResource(R.drawable.pic_7); break;
             case 8: profilePic.setImageResource(R.drawable.pic_8); break;
             case 9: profilePic.setImageResource(R.drawable.pic_9); break;
+            default: profilePic.setImageResource(R.drawable.pic_1); break;
         }
 
     }

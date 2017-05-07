@@ -2,7 +2,9 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 
 import android.app.ExpandableListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,12 +36,15 @@ public class DictionaryFrag extends Fragment {
     private String[] groups;
     private String[][] children;
 
+    public static final String DICT_EXPAND = "expand_id";
+    Integer expandId;
+
 
     public DictionaryFrag() {
-
     }
 
     public void onCreate(Bundle savedInstanceState) {
+        Log.i("DictFrag", "onCreate()");
         super.onCreate(savedInstanceState);
 
         groups = new String[]{"Basics", "Park", "Restaurant", "University"};
@@ -54,6 +59,7 @@ public class DictionaryFrag extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i("DictFrag", "onCreateView()");
         rootView = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
         return rootView;
@@ -61,7 +67,11 @@ public class DictionaryFrag extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        Log.i("DictFrag", "onViewCreated()");
         super.onViewCreated(view, savedInstanceState);
+
+        Bundle bundle = getArguments();
+        expandId = bundle.getInt(DICT_EXPAND);
 
         lv = (ExpandableListView) view.findViewById(R.id.explist);
         lv.setAdapter(new ExpandableListAdapter(groups, children));
@@ -74,6 +84,10 @@ public class DictionaryFrag extends Fragment {
                 return false;
             }
         });
+
+        if(expandId != 0) {
+            lv.expandGroup(expandId, true);
+        }
 
     }
 

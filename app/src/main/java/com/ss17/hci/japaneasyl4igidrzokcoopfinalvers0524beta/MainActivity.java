@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity
                         case 7: profilePic.setImageResource(R.drawable.pic_7); break;
                         case 8: profilePic.setImageResource(R.drawable.pic_8); break;
                         case 9: profilePic.setImageResource(R.drawable.pic_9); break;
+                        default: profilePic.setImageResource(R.drawable.pic_1); break;
                     }
                 } else {
                     Log.i("Mainacitvity", "onDrawerSlide(); offset == 0");
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+//        int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
     }

@@ -35,7 +35,7 @@
                     app:srcCompat="@drawable/park" />
 
                 <ImageButton
-                    android:id="@+id/PardDicitonaryButton"
+                    android:id="@+id/ParkDicitonaryButton"
                     android:layout_width="51dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="8dp"
