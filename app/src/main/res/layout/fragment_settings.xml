@@ -24,7 +24,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintVertical_bias="0.442" />
 
     <TextView
         android:id="@+id/textView4"
@@ -104,7 +105,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pic_4" />
+            app:srcCompat="@drawable/pic_7" />
 
         <ImageButton
             android:id="@+id/profilpic8"
@@ -114,7 +115,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pic_5" />
+            app:srcCompat="@drawable/pic_8" />
 
         <ImageButton
             android:id="@+id/profilpic9"
@@ -124,7 +125,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pic_6" />
+            app:srcCompat="@drawable/pic_9" />
 
     </LinearLayout>
 
@@ -144,14 +145,14 @@
         app:layout_constraintTop_toTopOf="@+id/guideline7">
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/profilpic1"
             android:layout_width="70dp"
             android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pic_1"
-            android:layout_gravity="center"/>
+            app:srcCompat="@drawable/pic_1" />
 
         <ImageButton
             android:id="@+id/profilpic2"
@@ -198,7 +199,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pic_7" />
+            app:srcCompat="@drawable/pic_4" />
 
         <ImageButton
             android:id="@+id/profilpic5"
@@ -208,7 +209,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pic_8" />
+            app:srcCompat="@drawable/pic_5" />
 
         <ImageButton
             android:id="@+id/profilpic6"
@@ -218,27 +219,27 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pic_9" />
+            app:srcCompat="@drawable/pic_6" />
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/pic"
         android:layout_width="55dp"
         android:layout_height="56dp"
-        app:srcCompat="@drawable/pic_4"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintLeft_toRightOf="@+id/name_input"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.55"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.5" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toRightOf="@+id/name_input"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55"
+        app:srcCompat="@drawable/pic_4" />
 
     <ProgressBar
         android:id="@+id/TrysRemainingProgressBar"

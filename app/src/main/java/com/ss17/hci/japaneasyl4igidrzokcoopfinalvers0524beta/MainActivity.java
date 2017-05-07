@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 //Test comment for test push
@@ -37,7 +38,36 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                if(slideOffset != 0.0) {
+                    Log.i("Mainacitvity", "onDrawerSlide(); offset != 0 "+String.valueOf(slideOffset));
+                    SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
+                    String name = settings.getString(SettingsFrag.USER_NAME, null);
+                    if(name == null)
+                        name = "Name";
+                    TextView nameText = (TextView) findViewById(R.id.user_name);
+                    nameText.setText(name);
+
+                    ImageView profilePic = (ImageView) findViewById(R.id.currentProfilPic);
+                    int picId = settings.getInt(SettingsFrag.PIC_ID, SettingsFrag.DEFAULT_PIC_ID);
+                    switch (picId) {
+                        case 1: profilePic.setImageResource(R.drawable.pic_1); break;
+                        case 2: profilePic.setImageResource(R.drawable.pic_2); break;
+                        case 3: profilePic.setImageResource(R.drawable.pic_3); break;
+                        case 4: profilePic.setImageResource(R.drawable.pic_4); break;
+                        case 5: profilePic.setImageResource(R.drawable.pic_5); break;
+                        case 6: profilePic.setImageResource(R.drawable.pic_6); break;
+                        case 7: profilePic.setImageResource(R.drawable.pic_7); break;
+                        case 8: profilePic.setImageResource(R.drawable.pic_8); break;
+                        case 9: profilePic.setImageResource(R.drawable.pic_9); break;
+                    }
+                } else {
+                    Log.i("Mainacitvity", "onDrawerSlide(); offset == 0");
+                }
+            }
+        };
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
