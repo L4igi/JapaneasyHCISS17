@@ -1,9 +1,7 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 /**
@@ -34,6 +32,7 @@ class CharacterContents {
             return second;
         }
     }
+    // end probs to stackoverflow
 
     //kanji -- meanings - pronounciations
     Map<String, Pair> basics = new HashMap<>();
