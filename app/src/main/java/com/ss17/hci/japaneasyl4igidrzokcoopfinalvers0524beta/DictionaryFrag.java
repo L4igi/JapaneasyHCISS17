@@ -17,6 +17,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import static com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta.MainActivity.allChars;
+
 /**
  * Pieced together from:
  * Android samples: com.example.android.apis.view.ExpandableList1
@@ -42,10 +45,10 @@ public class DictionaryFrag extends Fragment {
         groups = new String[]{"Basics", "Park", "Restaurant", "University"};
 
         children = new String[][]{
-                {"Hello","Good Morning","Good Evening","Thank You"},
-                {"Baum","Gras","Spielplatz","Sonnenschein"},
-                {"Nachtisch","Wein","Rechnung"},
-                {"Lernen","Vorlesug","Kaoru"}
+                allChars.getBaseChars(),
+                allChars.getParkChars(),
+                allChars.getResChars(),
+                allChars.getUniChars()
         };
     }
 
@@ -63,6 +66,14 @@ public class DictionaryFrag extends Fragment {
         lv = (ExpandableListView) view.findViewById(R.id.explist);
         lv.setAdapter(new ExpandableListAdapter(groups, children));
         lv.setGroupIndicator(null);
+        lv.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                //TODO: handle child click
+                //lv.getAdapter().getChild(groupPosition, childPosition);
+                return false;
+            }
+        });
 
     }
 

@@ -21,12 +21,18 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-//Test comment for test push
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String PREFS_NAME = "japaneasyPrefs";
+
+    public static final CharacterContents allChars = new CharacterContents();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +84,9 @@ public class MainActivity extends AppCompatActivity
         Homefragment homefragment=new Homefragment();
         FragmentManager fragmentManager= getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).commit();
+
+
+
     }
 
 
@@ -120,7 +129,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_lernen) {
 
             setTitle("Lernen");
-           LearnFrag learnFrag=new LearnFrag();
+            LearnFrag learnFrag=new LearnFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).commit();
 
@@ -145,18 +154,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
- /*   @Override
-    public void onDrawerSlide(View drawerView, float slideOffset) {
-        Log.i("Mainacitvity", "onDrawerSlide()");
-        if(slideOffset != 0.0) {
-            SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
-            String name = settings.getString(SettingsFrag.USER_NAME, null);
-            if(name == null)
-                name = "Name";
-            TextView nameText = (TextView) findViewById(R.id.user_name);
-            nameText.setText(name);
-        }
-    }*/
 
 
 }
