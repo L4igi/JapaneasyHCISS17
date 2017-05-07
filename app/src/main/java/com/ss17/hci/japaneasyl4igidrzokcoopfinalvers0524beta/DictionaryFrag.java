@@ -38,6 +38,9 @@ public class DictionaryFrag extends Fragment {
     private String[][] children;
     private String[][] turned = new String[4][10];
 
+    public static final String DICT_EXPAND = "expand_id";
+    Integer expandId;
+
 
     public DictionaryFrag() {
 
@@ -91,6 +94,16 @@ public class DictionaryFrag extends Fragment {
             }
         });
 
+        Bundle bundle = getArguments();
+        try {
+            expandId = bundle.getInt(DICT_EXPAND);
+        } catch (Exception e) {
+            expandId = 0;
+        }
+
+        if(expandId != 0) {
+            lv.expandGroup(expandId, true);
+        }
     }
 
     public class ExpandableListAdapter extends BaseExpandableListAdapter {

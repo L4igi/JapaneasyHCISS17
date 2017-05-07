@@ -30,13 +30,14 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
 
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 if(slideOffset != 0.0) {
-                    Log.i("Mainacitvity", "onDrawerSlide(); offset != 0 "+String.valueOf(slideOffset));
+                    Log.i("MainAcitvity", "onDrawerSlide(); offset != 0 "+String.valueOf(slideOffset));
+                //    Log.i("MainActivity", "Navigation Mode=="+String.valueOf(getActionBar().getNavigationMode()));
                     SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
                     String name = settings.getString(SettingsFrag.USER_NAME, null);
                     if(name == null)
@@ -61,6 +62,11 @@ public class MainActivity extends AppCompatActivity
                 } else {
                     Log.i("Mainacitvity", "onDrawerSlide(); offset == 0");
                 }
+            }
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                Log.i("onDrawerStateChanged", "State:"+String.valueOf(newState));
+                // TODO: could improve performace (vs. onDrawerSlide)
             }
         };
         drawer.setDrawerListener(toggle);
