@@ -71,7 +71,11 @@ public class DictionaryFrag extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Bundle bundle = getArguments();
-        expandId = bundle.getInt(DICT_EXPAND);
+        try {
+            expandId = bundle.getInt(DICT_EXPAND);
+        } catch (Exception e) {
+            expandId = 0;
+        }
 
         lv = (ExpandableListView) view.findViewById(R.id.explist);
         lv.setAdapter(new ExpandableListAdapter(groups, children));
