@@ -2,7 +2,11 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +26,10 @@ import static com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta.MainActivity
 /**
  * A simple {@link Fragment} subclass.
  */
+
+//TODO: Massively prettify Interface
 public class LearnFrag extends Fragment {
+    //TODO: Make kanji a Button and handle click
     TextView kanji;
     RadioGroup meanings;
     RadioGroup pronounciations;
@@ -30,6 +37,10 @@ public class LearnFrag extends Fragment {
     RadioButton[] pros = new RadioButton[3];
 
     public static final String PACKAGE = "package";
+
+    String chosenMeaning = null;
+    String chosenPronunciation = null;
+    boolean feedBackGiven = false;
 
     public LearnFrag() {
         // Required empty public constructor
@@ -39,7 +50,7 @@ public class LearnFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_learn, container, false);
+        final View view =inflater.inflate(R.layout.fragment_learn, container, false);
         kanji = (TextView) view.findViewById(R.id.KanjiInput);
         meanings = (RadioGroup) view.findViewById(R.id.meaningGroup);
         pronounciations = (RadioGroup) view.findViewById(R.id.pronounciationGroup);
@@ -79,7 +90,34 @@ public class LearnFrag extends Fragment {
         pros[1].setText(p.get(1));
         pros[2].setText(p.get(2));
 
+        meanings.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                RadioButton checked = (RadioButton) view.findViewById(checkedId);
+                chosenMeaning = checked.getText().toString();
+                if(chosenPronunciation != null) {
+                    giveFeedback();
+                }
+            }
+        });
+
+        pronounciations.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                RadioButton checked = (RadioButton) view.findViewById(checkedId);
+                chosenPronunciation = checked.getText().toString();
+                if(chosenMeaning != null) {
+                    giveFeedback();
+                }
+            }
+        });
+
+
+
         return view;
     }
 
+    private void giveFeedback() {
+        //TODO: Change Button color (but hooooow?)
+    }
 }
