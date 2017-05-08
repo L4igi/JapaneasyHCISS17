@@ -76,7 +76,7 @@ public class DictionaryFrag extends Fragment {
         lv.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Log.d("Testing", turned[groupPosition][childPosition]);
+                //Log.d("Testing", turned[groupPosition][childPosition]);
                 TextView tv = (TextView) v.findViewById(R.id.itemtext);
                 if(turned[groupPosition][childPosition] == null) {
                     Log.d("Testing", "alrighty");
