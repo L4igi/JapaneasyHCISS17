@@ -428,8 +428,7 @@ class CharacterContents {
         //fill park
         //grass
         ArrayList<String> mgrass = new ArrayList<>();
-        mgrass.add("Translation:");
-        mgrass.add("\n");
+
         mgrass.add("grass");
         mgrass.add("weeds");
         mgrass.add("herbs");
@@ -438,7 +437,7 @@ class CharacterContents {
         mgrass.add("draft");
         mgrass.add("\n");
         ArrayList<String> pgrass = new ArrayList<String>();
-        pgrass.add("Pronunciation:");
+  
         pgrass.add("\n");
         pgrass.add("kusa");
         pgrass.add("sou");
