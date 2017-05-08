@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity
 
     public static final CharacterContents allChars = new CharacterContents();
 
+    private ActionBarDrawerToggle toggle;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +43,9 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
 
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -76,7 +81,9 @@ public class MainActivity extends AppCompatActivity
             public void onDrawerStateChanged(int newState) {
                 Log.i("onDrawerStateChanged", "State:"+String.valueOf(newState));
                 // TODO: could improve performace (vs. onDrawerSlide)
+
             }
+
         };
         drawer.setDrawerListener(toggle);
         toggle.syncState();
@@ -94,6 +101,14 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        toggle.syncState();
+    }
+
+
 
 
     @Override
