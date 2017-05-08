@@ -55,22 +55,6 @@ public class Homefragment extends Fragment {
                 ft.commit();
             }
         });
- /*       parkLearnB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
-                DictionaryFrag dictionaryFrag=new DictionaryFrag();
-
-                Bundle bundle = new Bundle();
-                bundle.putInt(DictionaryFrag.DICT_EXPAND, 1);
-                dictionaryFrag.setArguments(bundle);
-
-                FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
-                ft.commit();
-            }
-        });*/
 
         restDictB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,22 +72,6 @@ public class Homefragment extends Fragment {
                 ft.commit();
             }
         });
-/*        restLearnB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
-                DictionaryFrag dictionaryFrag=new DictionaryFrag();
-
-                Bundle bundle = new Bundle();
-                bundle.putInt(DictionaryFrag.DICT_EXPAND, 1);
-                dictionaryFrag.setArguments(bundle);
-
-                FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
-                FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
-                ft.commit();
-            }
-        });*/
 
         uniDictB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,23 +89,55 @@ public class Homefragment extends Fragment {
                 ft.commit();
             }
         });
- /*       uniLearnB.setOnClickListener(new View.OnClickListener() {
+
+        parkLearnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
-                DictionaryFrag dictionaryFrag=new DictionaryFrag();
+                getActivity().setTitle("Lernen");
+                LearnFrag learnFrag=new LearnFrag();
 
                 Bundle bundle = new Bundle();
-                bundle.putInt(DictionaryFrag.DICT_EXPAND, 1);
-                dictionaryFrag.setArguments(bundle);
+                bundle.putInt(LearnFrag.PACKAGE, 1);
+                learnFrag.setArguments(bundle);
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
+                ft.replace(R.id.fragment, learnFrag);
                 ft.commit();
             }
-        });*/
+        });
+        restLearnB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().setTitle("Lernen");
+                LearnFrag learnFrag=new LearnFrag();
 
+                Bundle bundle = new Bundle();
+                bundle.putInt(LearnFrag.PACKAGE, 2);
+                learnFrag.setArguments(bundle);
+
+                FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                ft.replace(R.id.fragment, learnFrag);
+                ft.commit();
+            }
+        });
+        uniLearnB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().setTitle("Lernen");
+                LearnFrag learnFrag=new LearnFrag();
+
+                Bundle bundle = new Bundle();
+                bundle.putInt(LearnFrag.PACKAGE, 3);
+                learnFrag.setArguments(bundle);
+
+                FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                ft.replace(R.id.fragment, learnFrag);
+                ft.commit();
+            }
+        });
         return view;
     }
 

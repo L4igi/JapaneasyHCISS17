@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  * A simple {@link Fragment} subclass.
  */
 public class LearnFrag extends Fragment {
-
+    public static final String PACKAGE = "package";
 
     public LearnFrag() {
         // Required empty public constructor
