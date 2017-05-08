@@ -435,10 +435,7 @@ class CharacterContents {
         mgrass.add("pasture");
         mgrass.add("write");
         mgrass.add("draft");
-        mgrass.add("\n");
         ArrayList<String> pgrass = new ArrayList<String>();
-  
-        pgrass.add("\n");
         pgrass.add("kusa");
         pgrass.add("sou");
         Pair grass = new Pair(mgrass, pgrass);
