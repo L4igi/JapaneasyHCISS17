@@ -116,9 +116,8 @@ public class DictionaryFrag extends Fragment {
             lv.expandGroup(expandId, true);
         }
 
-//        DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.drawer_layout);
-/*        NavigationView navView = (NavigationView) view.findViewById(R.id.drawer_layout);
-        navView.setCheckedItem(2);*/
+        NavigationView navView = (NavigationView) getActivity().findViewById(R.id.nav_view);
+        navView.setCheckedItem(R.id.nav_wörterbuch);
     }
 
     public class ExpandableListAdapter extends BaseExpandableListAdapter {
