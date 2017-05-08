@@ -38,13 +38,15 @@ import static com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta.MainActivity
 //TODO: Massively prettify Interface
 public class LearnFrag extends Fragment {
     //TODO: Make kanji a Button and handle click
-    TextView kanji;
+    Button kanji;
     RadioGroup meanings;
     RadioGroup pronounciations;
     RadioButton[] means = new RadioButton[3];
     RadioButton[] pros = new RadioButton[3];
 
     public static final String PACKAGE = "package";
+
+    int kanjiGroup;
 
     String chosenMeaning = null;
     String chosenPronunciation = null;
@@ -64,7 +66,7 @@ public class LearnFrag extends Fragment {
 
 
         final View view =inflater.inflate(R.layout.fragment_learn, container, false);
-        kanji = (TextView) view.findViewById(R.id.KanjiInput);
+        kanji = (Button) view.findViewById(R.id.KanjiInput);
         meanings = (RadioGroup) view.findViewById(R.id.meaningGroup);
         pronounciations = (RadioGroup) view.findViewById(R.id.pronounciationGroup);
         means[0] = (RadioButton) view.findViewById(R.id.translatebutton1);
@@ -75,7 +77,6 @@ public class LearnFrag extends Fragment {
         pros[2] = (RadioButton) view.findViewById(R.id.aussprachebutton3);
 
         Bundle bundle = getArguments();
-        int kanjiGroup;
         try {
             kanjiGroup = bundle.getInt(PACKAGE);
         } catch (Exception e) {
@@ -125,6 +126,29 @@ public class LearnFrag extends Fragment {
             }
         });
 
+        kanji.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(feedBackGiven) {
+                    getActivity().setTitle("Lernen");
+                    LearnFrag nextKanjiSlide=new LearnFrag();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(PACKAGE, kanjiGroup);
+                    nextKanjiSlide.setArguments(bundle);
+
+                    FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    ft.replace(R.id.fragment, nextKanjiSlide);
+                    ft.commit();
+                } else {
+                    //TODO: popUp?
+                    Log.d("Testing", "Niccce");
+                }
+            }
+        });
+
+
 
 
         return view;
@@ -134,5 +158,6 @@ public class LearnFrag extends Fragment {
 
     private void giveFeedback() {
         //TODO: Change Button color (but hooooow?)
+        feedBackGiven = true;
     }
 }
