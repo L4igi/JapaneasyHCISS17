@@ -2,9 +2,11 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by Rosa on 06.05.2017.
@@ -46,6 +48,43 @@ class CharacterContents {
             return answer;
         }
     }
+
+    public class LearnSelection {
+        private String character;
+        private String corrMeaning;
+        private String corrPronunciation;
+        private ArrayList<String> falseMeanings;
+        private ArrayList<String> falsePronunciations;
+
+        public LearnSelection(String c, String cM, String cP, ArrayList<String> fM, ArrayList<String> fP) {
+            character = c;
+            corrMeaning = cM;
+            corrPronunciation = cP;
+            falseMeanings = fM;
+            falsePronunciations = fP;
+        }
+
+        public String getCorrMeaning() {
+            return corrMeaning;
+        }
+
+        public String getCharacter() {
+            return character;
+        }
+
+        public String getCorrPronunciation() {
+            return corrPronunciation;
+        }
+
+        public ArrayList<String> getFalseMeanings() {
+            return falseMeanings;
+        }
+
+        public ArrayList<String> getFalsePronunciations() {
+            return falsePronunciations;
+        }
+    }
+
     // end probs to stackoverflow
 
     //kanji -- meanings - pronounciations
@@ -558,6 +597,43 @@ class CharacterContents {
                 return(uni.get(ch));
         }
         return null;
+    }
+
+    public LearnSelection getParkRand() {
+        Random generator = new Random();
+        Object[] parkChars = park.values().toArray();
+        int[] usedCharNums = new int[5];
+        usedCharNums[0] = generator.nextInt(parkChars.length);
+        String mainChar = (String)parkChars[usedCharNums[0]];
+        Pair corrects = park.get(mainChar);
+        ArrayList<String> corrM = corrects.getFirst();
+        ArrayList<String> corrP = corrects.getSecond();
+        String randCorrM = corrM.get(generator.nextInt(corrM.size()));
+        String randCorrP = corrP.get(generator.nextInt(corrP.size()));
+        ArrayList<Pair> wrongElems = new ArrayList<>();
+        for(int i = 0; i < 4; ++i) {
+            int numUnused = parkChars.length - (i+1);
+            int nextCharNum =  generator.nextInt(numUnused);
+            for(int j = 0; j < i+1; ++j) {
+                if(nextCharNum == usedCharNums[i]) {
+                    nextCharNum = numUnused + j;
+                }
+            }
+            wrongElems.add(park.get((String)parkChars[nextCharNum]));
+            usedCharNums[i+1] = nextCharNum;
+        }
+        ArrayList<String> wrongM = new ArrayList<>();
+        ArrayList<String> wrongM1 = wrongElems.get(0).getFirst();
+        wrongM.add(wrongM1.get(generator.nextInt(wrongM1.size())));
+        ArrayList<String> wrongM2 = wrongElems.get(0).getFirst();
+        wrongM.add(wrongM2.get(generator.nextInt(wrongM2.size())));
+        ArrayList<String> wrongP = new ArrayList<>();
+        ArrayList<String> wrongP1 = wrongElems.get(0).getFirst();
+        wrongP.add(wrongP1.get(generator.nextInt(wrongP1.size())));
+        ArrayList<String> wrongP2 = wrongElems.get(0).getFirst();
+        wrongP.add(wrongP2.get(generator.nextInt(wrongP2.size())));
+        LearnSelection result = new LearnSelection(mainChar, randCorrM, randCorrP, wrongM, wrongP);
+        return result;
     }
 
 }
