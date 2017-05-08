@@ -3,7 +3,9 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,15 +14,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta.MainActivity.allChars;
 
 
@@ -45,6 +52,7 @@ public class LearnFrag extends Fragment {
 
     public LearnFrag() {
         // Required empty public constructor
+
     }
 
 
@@ -53,6 +61,7 @@ public class LearnFrag extends Fragment {
                              Bundle savedInstanceState) {
         NavigationView navView = (NavigationView) getActivity().findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_lernen);
+
 
         final View view =inflater.inflate(R.layout.fragment_learn, container, false);
         kanji = (TextView) view.findViewById(R.id.KanjiInput);
@@ -120,6 +129,8 @@ public class LearnFrag extends Fragment {
 
         return view;
     }
+
+
 
     private void giveFeedback() {
         //TODO: Change Button color (but hooooow?)

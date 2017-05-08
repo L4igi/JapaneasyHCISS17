@@ -2,7 +2,9 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,10 +12,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.R.id.toggle;
 
@@ -150,6 +157,42 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void showDialog(View view) {
+        PromptDialogFragment dialog = new PromptDialogFragment();
+        dialog.setCancelable(true);
+        dialog.show(getSupportFragmentManager(), "tag");
+    }
+
+    public static class PromptDialogFragment extends DialogFragment implements View.OnClickListener {
+
+        private Button btnGotIT;
+
+        @Override
+        public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            btnGotIT = (Button) view.findViewById(R.id.btngotIt);
+
+
+            btnGotIT.setOnClickListener(this);
+
+        }
+
+        @Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.helpdialog, container, false);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (view == btnGotIT) {
+                Toast.makeText(getActivity(), "You Got It", Toast.LENGTH_SHORT).show();
+            }
+            dismiss();
+        }
+
     }
 
 
