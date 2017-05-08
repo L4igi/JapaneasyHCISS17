@@ -428,13 +428,17 @@ class CharacterContents {
         //fill park
         //grass
         ArrayList<String> mgrass = new ArrayList<>();
+
         mgrass.add("grass");
         mgrass.add("weeds");
         mgrass.add("herbs");
         mgrass.add("pasture");
         mgrass.add("write");
         mgrass.add("draft");
+        mgrass.add("\n");
         ArrayList<String> pgrass = new ArrayList<String>();
+  
+        pgrass.add("\n");
         pgrass.add("kusa");
         pgrass.add("sou");
         Pair grass = new Pair(mgrass, pgrass);
