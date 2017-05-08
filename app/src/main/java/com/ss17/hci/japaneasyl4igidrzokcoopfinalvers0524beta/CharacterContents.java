@@ -599,39 +599,93 @@ class CharacterContents {
         return null;
     }
 
-    public LearnSelection getParkRand() {
+    public LearnSelection getRandSet(int packNum) {
+        Map<String,Pair> pack;
+        switch(packNum) {
+            case 1: pack = park; break;
+            case 2: pack = restaurant; break;
+            case 3: pack = uni; break;
+            default:pack = basics;
+        }
         Random generator = new Random();
-        Object[] parkChars = park.values().toArray();
-        int[] usedCharNums = new int[5];
-        usedCharNums[0] = generator.nextInt(parkChars.length);
-        String mainChar = (String)parkChars[usedCharNums[0]];
-        Pair corrects = park.get(mainChar);
+        //Object[] packVals = pack.values().toArray();
+        Object[] packChars = pack.keySet().toArray();
+        //int[] usedCharNums = new int[5];
+        int usedChar = generator.nextInt(packChars.length);
+        String mainChar = (String)packChars[usedChar];
+        Pair corrects = pack.get(mainChar);
         ArrayList<String> corrM = corrects.getFirst();
         ArrayList<String> corrP = corrects.getSecond();
         String randCorrM = corrM.get(generator.nextInt(corrM.size()));
         String randCorrP = corrP.get(generator.nextInt(corrP.size()));
-        ArrayList<Pair> wrongElems = new ArrayList<>();
-        for(int i = 0; i < 4; ++i) {
-            int numUnused = parkChars.length - (i+1);
+        ArrayList<String> wrongM = new ArrayList<>();
+        ArrayList<String> wrongP = new ArrayList<>();
+        int randCharNum = generator.nextInt(packChars.length - 1);
+        if(randCharNum == usedChar) {
+            randCharNum = packChars.length - 1;
+        }
+        String randChar = (String)packChars[randCharNum];
+        Pair randVal = pack.get(randChar);
+        wrongM.add(randVal.getFirst().get(generator.nextInt(randVal.getFirst().size())));
+        int randInt = generator.nextInt(randVal.getSecond().size());
+        String randPro1 = randVal.getSecond().get(randInt);
+        if(randPro1 == randCorrP) {
+            try {
+                randPro1 = randVal.getSecond().get(randInt + 1);
+            } catch (Exception e) {
+                try {
+                    randPro1 = randVal.getSecond().get(randInt - 1);
+                } catch (Exception f) {
+                    randPro1 = "baka";
+                }
+            }
+        }
+        wrongP.add(randPro1);
+        int randCharNum2 = generator.nextInt(packChars.length - 2);
+        if(randCharNum2 == usedChar) {
+            randCharNum2 = packChars.length - 1;
+        }else if(randCharNum2 == randCharNum) {
+            randCharNum2 = packChars.length - 2;
+        }
+        String randChar2 = (String)packChars[randCharNum2];
+        Pair randVal2 = pack.get(randChar2);
+        wrongM.add(randVal2.getFirst().get(generator.nextInt(randVal2.getFirst().size())));
+        int randInt2 = generator.nextInt(randVal2.getSecond().size());
+        String randPro2 = randVal2.getSecond().get(randInt2);
+        if(randPro2 == randCorrP || randPro2 == randPro1) {
+            try {
+                randPro2 = randVal2.getSecond().get(randInt + 1);
+            } catch (Exception e) {
+                try {
+                    randPro2 = randVal2.getSecond().get(randInt - 1);
+                } catch (Exception f) {
+                    randPro2 = "aho";
+                }
+            }
+        }
+        wrongP.add(randPro2);
+        /*for(int i = 0; i < 4; ++i) {
+            int numUnused = packChars.length - (i+1);
             int nextCharNum =  generator.nextInt(numUnused);
             for(int j = 0; j < i+1; ++j) {
-                if(nextCharNum == usedCharNums[i]) {
+                Log.d("Testing RandSet", nextCharNum + ", " + usedCharNums[j]);
+                if(nextCharNum == usedCharNums[j]) {
                     nextCharNum = numUnused + j;
                 }
             }
-            wrongElems.add(park.get((String)parkChars[nextCharNum]));
+            wrongElems.add(pack.get((String)packChars[nextCharNum]));
             usedCharNums[i+1] = nextCharNum;
         }
-        ArrayList<String> wrongM = new ArrayList<>();
         ArrayList<String> wrongM1 = wrongElems.get(0).getFirst();
         wrongM.add(wrongM1.get(generator.nextInt(wrongM1.size())));
         ArrayList<String> wrongM2 = wrongElems.get(0).getFirst();
         wrongM.add(wrongM2.get(generator.nextInt(wrongM2.size())));
-        ArrayList<String> wrongP = new ArrayList<>();
-        ArrayList<String> wrongP1 = wrongElems.get(0).getFirst();
+        ArrayList<String> wrongP1 = wrongElems.get(0).getSecond();
         wrongP.add(wrongP1.get(generator.nextInt(wrongP1.size())));
-        ArrayList<String> wrongP2 = wrongElems.get(0).getFirst();
+        ArrayList<String> wrongP2 = wrongElems.get(0).getSecond();
         wrongP.add(wrongP2.get(generator.nextInt(wrongP2.size())));
+        Log.d("Testing randSet",wrongM.toString());
+        Log.d("Testing randSet",wrongP.toString());*/
         LearnSelection result = new LearnSelection(mainChar, randCorrM, randCorrP, wrongM, wrongP);
         return result;
     }

@@ -136,15 +136,9 @@
         app:layout_constraintVertical_bias="0.0">
 
         <RadioGroup
+            android:id="@+id/meaningGroup"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <RadioButton
-                android:id="@+id/translatebutton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="RadioButton" />
+            android:layout_height="match_parent">
 
             <RadioButton
                 android:id="@+id/translatebutton1"
@@ -155,6 +149,13 @@
 
             <RadioButton
                 android:id="@+id/translatebutton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/translatebutton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -181,8 +182,9 @@
         app:layout_constraintVertical_bias="0.0">
 
         <RadioGroup
+            android:id="@+id/pronounciationGroup"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <RadioButton
                 android:id="@+id/aussprachebutton1"
