@@ -89,56 +89,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintRight_toLeftOf="@+id/guideline4"
-        android:layout_marginRight="8dp">
-
-        <Button
-            android:id="@+id/translateanswer1"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            android:text="Button"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:id="@+id/translateanser2"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            android:text="Button"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:id="@+id/translateanswer3"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            android:text="Button"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
@@ -150,38 +100,30 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp">
 
-        <Button
+        <ToggleButton
             android:id="@+id/ausspracheanswer1"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:text="ToggleButton"
             android:layout_weight="1"
-            android:background="@android:color/white"
-            android:text="Button"
-            android:textColor="@android:color/black" />
 
-        <Button
-            android:id="@+id/ausspracheanser2"
-            style="@style/Widget.AppCompat.Button.Colored"
+            />
+
+        <ToggleButton
+            android:id="@+id/ausspracheanswer2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:text="ToggleButton"
             android:layout_weight="1"
-            android:background="@android:color/white"
-            android:text="Button"
-            android:textColor="@android:color/black" />
+            />
 
-        <Button
+        <ToggleButton
             android:id="@+id/ausspracheanswer3"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:text="ToggleButton"
             android:layout_weight="1"
-            android:background="@android:color/white"
-            android:text="Button"
-            android:textColor="@android:color/black" />
+            />
     </LinearLayout>
 
     <TextView
@@ -215,5 +157,47 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ToggleButton
+            android:id="@+id/translateanser1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ToggleButton"
+            android:textOff="off"
+            android:textOn="on" />
+
+        <ToggleButton
+            android:id="@+id/translateanser2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ToggleButton" />
+
+        <ToggleButton
+            android:id="@+id/translateanser3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ToggleButton" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
