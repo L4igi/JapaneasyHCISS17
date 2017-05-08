@@ -1,6 +1,7 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 
 /**
@@ -18,6 +20,7 @@ import android.widget.ImageButton;
 public class Homefragment extends Fragment {
     ImageButton parkDictB, uniDictB, restDictB,
                 parkLearnB, uniLearnB, restLearnB;
+
 
     public Homefragment() {
         // Required empty public constructor
@@ -38,6 +41,7 @@ public class Homefragment extends Fragment {
 
         uniDictB = (ImageButton) view.findViewById(R.id.UniversityDictionaryButton);
         uniLearnB = (ImageButton) view.findViewById(R.id.UniversityLearnButton);
+
 
         parkDictB.setOnClickListener(new View.OnClickListener() {
             @Override

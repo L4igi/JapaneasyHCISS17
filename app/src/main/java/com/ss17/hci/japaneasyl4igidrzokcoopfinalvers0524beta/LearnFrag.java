@@ -130,7 +130,22 @@ public class LearnFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 if(feedBackGiven) {
-                    getActivity().setTitle("Lernen");
+                    switch (kanjiGroup){
+                        case 0:
+                            getActivity().setTitle("Learn Basics");
+                            break;
+                        case 1:
+                            getActivity().setTitle("Learn Park");
+                            break;
+                        case 2:
+                            getActivity().setTitle("Learn Restaurant");
+                            break;
+                        case 3:
+                            getActivity().setTitle("Learn University");
+                            break;
+                        default:
+                            getActivity().setTitle("Learn");
+                    }
                     LearnFrag nextKanjiSlide=new LearnFrag();
 
                     Bundle bundle = new Bundle();
