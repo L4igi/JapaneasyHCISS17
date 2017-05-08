@@ -42,7 +42,7 @@ public class Homefragment extends Fragment {
         parkDictB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
+                getActivity().setTitle("Dictionary");
                 DictionaryFrag dictionaryFrag=new DictionaryFrag();
 
                 Bundle bundle = new Bundle();
@@ -59,7 +59,7 @@ public class Homefragment extends Fragment {
         restDictB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
+                getActivity().setTitle("Dicitonary");
                 DictionaryFrag dictionaryFrag=new DictionaryFrag();
 
                 Bundle bundle = new Bundle();
@@ -76,7 +76,7 @@ public class Homefragment extends Fragment {
         uniDictB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
+                getActivity().setTitle("Dictionary");
                 DictionaryFrag dictionaryFrag=new DictionaryFrag();
 
                 Bundle bundle = new Bundle();
@@ -93,7 +93,7 @@ public class Homefragment extends Fragment {
         parkLearnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Lernen");
+                getActivity().setTitle("Learn Park");
                 LearnFrag learnFrag=new LearnFrag();
 
                 Bundle bundle = new Bundle();
@@ -109,7 +109,7 @@ public class Homefragment extends Fragment {
         restLearnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Lernen");
+                getActivity().setTitle("Learn Restaurant");
                 LearnFrag learnFrag=new LearnFrag();
 
                 Bundle bundle = new Bundle();
@@ -125,7 +125,7 @@ public class Homefragment extends Fragment {
         uniLearnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Lernen");
+                getActivity().setTitle("Learn University");
                 LearnFrag learnFrag=new LearnFrag();
 
                 Bundle bundle = new Bundle();

@@ -8,8 +8,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="w_rterbuch">Wörterbuch</string>
-    <string name="lernen">Lernen</string>
-    <string name="einstellungen">Einstellungen</string>
+    <string name="wörterbuch">Dictionary</string>
+    <string name="lernen">Learn</string>
+    <string name="einstellungen">Settings</string>
     <string name="nearby">Nearby</string>
+    <string name="lernenpark">Learn Park</string>
+    <string name="lernenrestaurant">Learn Restaurant</string>
+    <string name="learnuniversity">Learn University</string>
+    <string name="learnbasics">Learn Basics</string>
 </resources>

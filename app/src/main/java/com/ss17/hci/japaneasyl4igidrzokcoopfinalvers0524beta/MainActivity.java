@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_wörterbuch) {
 
-            setTitle("Wörterbuch");
+            setTitle("Dictionary");
             DictionaryFrag dictionaryFrag=new DictionaryFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, dictionaryFrag).commit();
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_lernen) {
 
-            setTitle("Lernen");
+            setTitle("Learn Basics");
             LearnFrag learnFrag=new LearnFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).commit();
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_einstellungen) {
 
-            setTitle("Einstellungen");
+            setTitle("Settings");
             SettingsFrag settingsFrag=new SettingsFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment, settingsFrag).commit();
