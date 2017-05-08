@@ -4,6 +4,8 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -48,6 +50,7 @@ public class DictionaryFrag extends Fragment {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("DictFrag", "onCreate()");
 
         groups = new String[]{"Basics", "Park", "Restaurant", "University"};
 
@@ -69,6 +72,7 @@ public class DictionaryFrag extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.i("DictFrag", "onViewCreated()");
 
         lv = (ExpandableListView) view.findViewById(R.id.explist);
         lv.setAdapter(new ExpandableListAdapter(groups, children));
@@ -104,6 +108,10 @@ public class DictionaryFrag extends Fragment {
         if(expandId != 0) {
             lv.expandGroup(expandId, true);
         }
+
+//        DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.drawer_layout);
+/*        NavigationView navView = (NavigationView) view.findViewById(R.id.drawer_layout);
+        navView.setCheckedItem(2);*/
     }
 
     public class ExpandableListAdapter extends BaseExpandableListAdapter {
