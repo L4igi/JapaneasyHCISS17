@@ -18,7 +18,7 @@ import android.widget.TextView;
 import static android.R.id.toggle;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     public static final String PREFS_NAME = "japaneasyPrefs";
 
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_nearby);
 
         setTitle("Nearby");
         Homefragment homefragment=new Homefragment();
