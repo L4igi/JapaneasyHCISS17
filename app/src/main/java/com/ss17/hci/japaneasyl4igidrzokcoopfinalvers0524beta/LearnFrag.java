@@ -3,6 +3,7 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -50,6 +51,9 @@ public class LearnFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        NavigationView navView = (NavigationView) getActivity().findViewById(R.id.nav_view);
+        navView.setCheckedItem(R.id.nav_lernen);
+
         final View view =inflater.inflate(R.layout.fragment_learn, container, false);
         kanji = (TextView) view.findViewById(R.id.KanjiInput);
         meanings = (RadioGroup) view.findViewById(R.id.meaningGroup);
