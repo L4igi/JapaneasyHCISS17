@@ -143,21 +143,21 @@
 
             <RadioButton
                 android:id="@+id/translatebutton1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/translatebutton2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/translatebutton3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
@@ -189,21 +189,21 @@
 
             <RadioButton
                 android:id="@+id/aussprachebutton1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/aussprachebutton2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/aussprachebutton3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />

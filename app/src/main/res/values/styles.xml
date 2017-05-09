@@ -20,8 +20,5 @@
 
     <style name="JapaneasyTheme" parent="AppTheme" />
 
-    <style name="MyRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
-        <item name="android:button">@drawable/custom_btn_radio</item>
-    </style>
 
 </resources>

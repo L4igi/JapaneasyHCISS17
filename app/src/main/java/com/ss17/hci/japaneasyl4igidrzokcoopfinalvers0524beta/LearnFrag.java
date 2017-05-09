@@ -1,6 +1,7 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.NavigationView;
@@ -179,22 +180,22 @@ public class LearnFrag extends Fragment {
         int failColor = 121;
         if(chosenMeaning == corrMeaning) {
             Log.d("Testing feedback", "Should assign corrColor");
-            checkedM.setBackgroundColor(corrColor);
+            checkedM.setBackgroundColor(Color.GREEN);
         } else {
             Log.d("Testing feedback", "Should assign failColor");
-            checkedM.setBackgroundColor(failColor);
-            corrM.setBackgroundColor(corrColor);
+            checkedM.setBackgroundColor(Color.RED);
+            corrM.setBackgroundColor(Color.GREEN);
         }
         if(chosenPronunciation == corrPronunciation) {
-            checkedP.setBackgroundColor(corrColor);
+            checkedP.setBackgroundColor(Color.GREEN);
         } else {
-            checkedP.setBackgroundColor(failColor);
-            corrP.setBackgroundColor(corrColor);
+            checkedP.setBackgroundColor(Color.RED);
+            corrP.setBackgroundColor(Color.GREEN);
         }
         if(chosenPronunciation == corrPronunciation && chosenMeaning == corrMeaning) {
-            kanji.setBackgroundColor(corrColor);
+            kanji.setBackgroundColor(Color.GREEN);
         }else {
-            kanji.setBackgroundColor(failColor);
+            kanji.setBackgroundColor(Color.RED);
             //TODO: Ändere freiversuche
         }
         feedBackGiven = true;
