@@ -47,6 +47,7 @@ public class LearnFrag extends Fragment {
     String chosenPronunciation = null;
     boolean feedBackGiven = false;
 
+
     public LearnFrag() {
         // Required empty public constructor
     }

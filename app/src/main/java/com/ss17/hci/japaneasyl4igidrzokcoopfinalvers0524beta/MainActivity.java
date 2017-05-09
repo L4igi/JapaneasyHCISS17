@@ -102,6 +102,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -143,7 +146,7 @@ public class MainActivity extends AppCompatActivity
             setTitle("Dictionary");
             DictionaryFrag dictionaryFrag=new DictionaryFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, dictionaryFrag).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment, dictionaryFrag).addToBackStack("Nearby").commit();
 
 
         } else if (id == R.id.nav_lernen) {
@@ -151,21 +154,21 @@ public class MainActivity extends AppCompatActivity
             setTitle("Learn Basics");
             LearnFrag learnFrag=new LearnFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).addToBackStack("Nearby").commit();
 
         } else if (id == R.id.nav_nearby) {
 
             setTitle("Nearby");
             Homefragment homefragment=new Homefragment();
             FragmentManager fragmentManager= getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).addToBackStack("Nearby").commit();
 
         } else if (id == R.id.nav_einstellungen) {
 
             setTitle("Settings");
             SettingsFrag settingsFrag=new SettingsFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, settingsFrag).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment, settingsFrag).addToBackStack("Nearby").commit();
 
         }
 
