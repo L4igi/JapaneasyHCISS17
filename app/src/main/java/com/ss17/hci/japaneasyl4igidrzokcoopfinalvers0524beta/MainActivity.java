@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity
     private static final POIList poiList = new POIList();
     private static final double distThr = 15;
 
+    private ActionBarDrawerToggle toggle;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +56,9 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
 
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -89,7 +94,9 @@ public class MainActivity extends AppCompatActivity
             public void onDrawerStateChanged(int newState) {
                 Log.i("onDrawerStateChanged", "State:"+String.valueOf(newState));
                 // TODO: could improve performace (vs. onDrawerSlide)
+
             }
+
         };
         drawer.setDrawerListener(toggle);
         toggle.syncState();
@@ -148,15 +155,30 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        toggle.syncState();
+    }
+
+
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        setTitle("Nearby");
+
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
     }
+
+
 
 
     @Override
@@ -177,32 +199,32 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_wörterbuch) {
 
-            setTitle("Wörterbuch");
+            setTitle("Dictionary");
             DictionaryFrag dictionaryFrag=new DictionaryFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, dictionaryFrag).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment, dictionaryFrag).addToBackStack("Nearby").commit();
 
 
         } else if (id == R.id.nav_lernen) {
 
-            setTitle("Lernen");
+            setTitle("Learn Basics");
             LearnFrag learnFrag=new LearnFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment, learnFrag).addToBackStack("Nearby").commit();
 
         } else if (id == R.id.nav_nearby) {
 
             setTitle("Nearby");
             Homefragment homefragment=new Homefragment();
             FragmentManager fragmentManager= getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).addToBackStack("Nearby").commit();
 
         } else if (id == R.id.nav_einstellungen) {
 
-            setTitle("Einstellungen");
+            setTitle("Settings");
             SettingsFrag settingsFrag=new SettingsFrag();
             FragmentManager fragmentManager= getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment, settingsFrag).commit();
+            fragmentManager.beginTransaction().replace(R.id.fragment, settingsFrag).addToBackStack("Nearby").commit();
 
         }
 

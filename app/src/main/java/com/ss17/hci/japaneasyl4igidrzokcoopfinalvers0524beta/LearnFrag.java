@@ -1,11 +1,10 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,20 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta.MainActivity.allChars;
 
 
@@ -37,7 +29,6 @@ import static com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta.MainActivity
 
 //TODO: Massively prettify Interface
 public class LearnFrag extends Fragment {
-    //TODO: Make kanji a Button and handle click
     Button kanji;
     RadioGroup meanings;
     RadioGroup pronounciations;
@@ -48,15 +39,18 @@ public class LearnFrag extends Fragment {
 
     int kanjiGroup;
 
+    String corrMeaning = null;
+    String corrPronunciation = null;
+    RadioButton corrM = null;
+    RadioButton corrP = null;
     String chosenMeaning = null;
     String chosenPronunciation = null;
     boolean feedBackGiven = false;
 
+
     public LearnFrag() {
         // Required empty public constructor
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,12 +83,14 @@ public class LearnFrag extends Fragment {
         long seed = System.nanoTime();
         Random generator = new Random(seed);
 
+        corrMeaning = randSet.getCorrMeaning();
         ArrayList<String> m = randSet.getFalseMeanings();
-        m.add(randSet.getCorrMeaning());
+        m.add(corrMeaning);
         Collections.shuffle(m, generator);
 
+        corrPronunciation = randSet.getCorrPronunciation();
         ArrayList<String> p = randSet.getFalsePronunciations();
-        p.add(randSet.getCorrPronunciation());
+        p.add(corrPronunciation);
         Collections.shuffle(m, generator);
 
         means[0].setText(m.get(0));
@@ -103,6 +99,15 @@ public class LearnFrag extends Fragment {
         pros[0].setText(p.get(0));
         pros[1].setText(p.get(1));
         pros[2].setText(p.get(2));
+
+        for(int i=0; i < 3; ++i) {
+            if(m.get(i) == corrMeaning) {
+                corrM = means[i];
+            }
+            if(p.get(i) == corrPronunciation) {
+                corrP = pros[i];
+            }
+        }
 
         meanings.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -130,7 +135,23 @@ public class LearnFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 if(feedBackGiven) {
-                    getActivity().setTitle("Lernen");
+                    //TODO: Von Freiversuchen abhängig machen
+                    switch (kanjiGroup){
+                        case 0:
+                            getActivity().setTitle("Learn Basics");
+                            break;
+                        case 1:
+                            getActivity().setTitle("Learn Park");
+                            break;
+                        case 2:
+                            getActivity().setTitle("Learn Restaurant");
+                            break;
+                        case 3:
+                            getActivity().setTitle("Learn University");
+                            break;
+                        default:
+                            getActivity().setTitle("Learn");
+                    }
                     LearnFrag nextKanjiSlide=new LearnFrag();
 
                     Bundle bundle = new Bundle();
@@ -142,22 +163,43 @@ public class LearnFrag extends Fragment {
                     ft.replace(R.id.fragment, nextKanjiSlide);
                     ft.commit();
                 } else {
-                    //TODO: popUp?
+                    //TODO: Highlight Help Button (temporarily replace with another pic?)
                     Log.d("Testing", "Niccce");
                 }
             }
         });
 
-
-
-
         return view;
     }
 
-
-
     private void giveFeedback() {
-        //TODO: Change Button color (but hooooow?)
+        Log.d("Testing feedback", "At least");
+        RadioButton checkedM = (RadioButton) getView().findViewById(meanings.getCheckedRadioButtonId());
+        RadioButton checkedP = (RadioButton) getView().findViewById(pronounciations.getCheckedRadioButtonId());
+        //TODO: fix colors (change not reflected in interface and colors picked randomly)
+        if(chosenMeaning == corrMeaning) {
+            Log.d("Testing feedback", "Should assign corrColor");
+            checkedM.setBackgroundColor(Color.GREEN);
+        } else {
+            Log.d("Testing feedback", "Should assign failColor");
+            checkedM.setBackgroundColor(Color.RED);
+            corrM.setBackgroundColor(Color.GREEN);
+        }
+        if(chosenPronunciation == corrPronunciation) {
+            checkedP.setBackgroundColor(Color.GREEN);
+        } else {
+            checkedP.setBackgroundColor(Color.RED);
+            corrP.setBackgroundColor(Color.GREEN);
+        }
+        if(chosenPronunciation == corrPronunciation && chosenMeaning == corrMeaning) {
+            kanji.setBackgroundColor(Color.GREEN);
+        }else {
+            kanji.setBackgroundColor(Color.RED);
+            //TODO: Ändere freiversuche
+        }
+
+        kanji.setText("Next ->");
+
         feedBackGiven = true;
     }
 }

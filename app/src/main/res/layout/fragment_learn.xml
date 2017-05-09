@@ -95,7 +95,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Übersetzung"
+        android:text="Translation"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/guideline4"
@@ -111,7 +111,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="Aussprache"
+        android:text="Pronunciation"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintLeft_toLeftOf="@+id/guideline4"
         app:layout_constraintRight_toRightOf="parent"
@@ -143,21 +143,21 @@
 
             <RadioButton
                 android:id="@+id/translatebutton1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/translatebutton2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/translatebutton3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
@@ -189,21 +189,21 @@
 
             <RadioButton
                 android:id="@+id/aussprachebutton1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/aussprachebutton2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />
 
             <RadioButton
                 android:id="@+id/aussprachebutton3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="RadioButton" />

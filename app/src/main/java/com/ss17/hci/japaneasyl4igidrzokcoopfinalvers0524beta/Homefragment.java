@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 
 /**
@@ -21,6 +23,8 @@ public class Homefragment extends Fragment {
     ImageButton parkDictB, uniDictB, restDictB,
                 parkLearnB, uniLearnB, restLearnB;
     TextView freeParkUnitsView, freeRestUnitsView, freeUniUnitsView;
+    TextView freeParkUnitsView, freeRestUnitsView, freeUniUnitsView;
+
 
     public Homefragment() {
         // Required empty public constructor
@@ -32,6 +36,10 @@ public class Homefragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_homefragment, container, false);
+
+        freeParkUnitsView = (TextView) view.findViewById(R.id.LernversuchePark);
+        freeRestUnitsView = (TextView) view.findViewById(R.id.LernversucheRestaurant);
+        freeUniUnitsView = (TextView) view.findViewById(R.id.LernversucheUni);
 
         freeParkUnitsView = (TextView) view.findViewById(R.id.LernversuchePark);
         freeRestUnitsView = (TextView) view.findViewById(R.id.LernversucheRestaurant);
@@ -53,10 +61,17 @@ public class Homefragment extends Fragment {
         freeRestUnitsView.setText(settings.getString(MainActivity.restFree, "0"));
         freeUniUnitsView.setText(settings.getString(MainActivity.uniFree, "0"));
 
+    //    SharedPreferences settings = MainActivity.settings;
+        SharedPreferences settings = getActivity().getSharedPreferences(MainActivity.PREFS_NAME, 0);
+
+        freeParkUnitsView.setText(settings.getString(MainActivity.uniFree, "0"));
+        freeRestUnitsView.setText(settings.getString(MainActivity.restFree, "0"));
+        freeUniUnitsView.setText(settings.getString(MainActivity.uniFree, "0"));
+
         parkDictB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
+                getActivity().setTitle("Dictionary");
                 DictionaryFrag dictionaryFrag=new DictionaryFrag();
 
                 Bundle bundle = new Bundle();
@@ -65,7 +80,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
+                ft.replace(R.id.fragment, dictionaryFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
@@ -73,7 +88,7 @@ public class Homefragment extends Fragment {
         restDictB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
+                getActivity().setTitle("Dicitonary");
                 DictionaryFrag dictionaryFrag=new DictionaryFrag();
 
                 Bundle bundle = new Bundle();
@@ -82,7 +97,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
+                ft.replace(R.id.fragment, dictionaryFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
@@ -90,7 +105,7 @@ public class Homefragment extends Fragment {
         uniDictB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Wörterbuch");
+                getActivity().setTitle("Dictionary");
                 DictionaryFrag dictionaryFrag=new DictionaryFrag();
 
                 Bundle bundle = new Bundle();
@@ -99,7 +114,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
+                ft.replace(R.id.fragment, dictionaryFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
@@ -107,7 +122,7 @@ public class Homefragment extends Fragment {
         parkLearnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Lernen");
+                getActivity().setTitle("Learn Park");
                 LearnFrag learnFrag=new LearnFrag();
 
                 Bundle bundle = new Bundle();
@@ -116,14 +131,14 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, learnFrag);
+                ft.replace(R.id.fragment, learnFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
         restLearnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Lernen");
+                getActivity().setTitle("Learn Restaurant");
                 LearnFrag learnFrag=new LearnFrag();
 
                 Bundle bundle = new Bundle();
@@ -132,14 +147,14 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, learnFrag);
+                ft.replace(R.id.fragment, learnFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
         uniLearnB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().setTitle("Lernen");
+                getActivity().setTitle("Learn University");
                 LearnFrag learnFrag=new LearnFrag();
 
                 Bundle bundle = new Bundle();
@@ -148,7 +163,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, learnFrag);
+                ft.replace(R.id.fragment, learnFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
