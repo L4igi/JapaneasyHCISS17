@@ -176,8 +176,6 @@ public class LearnFrag extends Fragment {
         RadioButton checkedM = (RadioButton) getView().findViewById(meanings.getCheckedRadioButtonId());
         RadioButton checkedP = (RadioButton) getView().findViewById(pronounciations.getCheckedRadioButtonId());
         //TODO: fix colors (change not reflected in interface and colors picked randomly)
-        int corrColor = 334;
-        int failColor = 121;
         if(chosenMeaning == corrMeaning) {
             Log.d("Testing feedback", "Should assign corrColor");
             checkedM.setBackgroundColor(Color.GREEN);
@@ -198,6 +196,9 @@ public class LearnFrag extends Fragment {
             kanji.setBackgroundColor(Color.RED);
             //TODO: Ändere freiversuche
         }
+
+        kanji.setText("Next ->");
+
         feedBackGiven = true;
     }
 }
