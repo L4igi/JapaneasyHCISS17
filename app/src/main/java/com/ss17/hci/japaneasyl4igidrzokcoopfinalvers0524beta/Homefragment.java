@@ -55,7 +55,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
+                ft.replace(R.id.fragment, dictionaryFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
@@ -72,7 +72,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
+                ft.replace(R.id.fragment, dictionaryFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
@@ -89,7 +89,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, dictionaryFrag);
+                ft.replace(R.id.fragment, dictionaryFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
@@ -106,7 +106,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, learnFrag);
+                ft.replace(R.id.fragment, learnFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
@@ -122,7 +122,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, learnFrag);
+                ft.replace(R.id.fragment, learnFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
@@ -138,7 +138,7 @@ public class Homefragment extends Fragment {
 
                 FragmentManager fragmentManager= getActivity().getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment, learnFrag);
+                ft.replace(R.id.fragment, learnFrag).addToBackStack("Nearby");
                 ft.commit();
             }
         });
