@@ -1,6 +1,10 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -28,8 +32,17 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     public static final String PREFS_NAME = "japaneasyPrefs";
+    protected static SharedPreferences settings = null;
+
+    public static final String parkFree = "park_free",
+                                restFree = "rest_free",
+                                uniFree = "uni_free";
+
+    public static final int freeUnitsPreVisit = 50;
 
     public static final CharacterContents allChars = new CharacterContents();
+    private static final POIList poiList = new POIList();
+    private static final double distThr = 15;
 
     private ActionBarDrawerToggle toggle;
 
@@ -52,7 +65,7 @@ public class MainActivity extends AppCompatActivity
                 if(slideOffset != 0.0) {
                     Log.i("MainAcitvity", "onDrawerSlide(); offset != 0 "+String.valueOf(slideOffset));
                 //    Log.i("MainActivity", "Navigation Mode=="+String.valueOf(getActionBar().getNavigationMode()));
-                    SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
+                    settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
                     String name = settings.getString(SettingsFrag.USER_NAME, null);
                     if(name == null)
                         name = "Name";
@@ -74,7 +87,7 @@ public class MainActivity extends AppCompatActivity
                         default: profilePic.setImageResource(R.drawable.pic_1); break;
                     }
                 } else {
-                    Log.i("Mainacitvity", "onDrawerSlide(); offset == 0");
+                    Log.i("MainAcitvity", "onDrawerSlide(); offset == 0");
                 }
             }
             @Override
@@ -97,9 +110,48 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager= getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment, homefragment).commit();
 
+        // GPS
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location currentLocation) {
+                Log.i("LOCATION_CHANGED", currentLocation.toString());
 
+                double dPark = currentLocation.distanceTo(poiList.park);
+                double dRest = currentLocation.distanceTo(poiList.restaurant);
+                double dUni = currentLocation.distanceTo(poiList.uni);
 
+                SharedPreferences.Editor editor = settings.edit();
+                if(dPark < distThr) {
+                    // entered park
+                    editor.putInt(parkFree, freeUnitsPreVisit);
+                } else if(dRest < distThr) {
+                    // entered restaurant
+                    editor.putInt(restFree, freeUnitsPreVisit);
+                } else if(dUni < distThr) {
+                    // entered university
+                    editor.putInt(uniFree, freeUnitsPreVisit);
+                }
+                editor.commit();
+            }
 
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
     }
 
 
