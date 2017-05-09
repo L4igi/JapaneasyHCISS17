@@ -97,7 +97,6 @@
                     android:text="Learn"
                     app:layout_constraintLeft_toLeftOf="@+id/guideline2"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintTop_toTopOf="@+id/guideline"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
@@ -470,7 +469,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintGuide_begin="120dp"
                     tools:layout_editor_absoluteX="8dp"
-                    tools:layout_editor_absoluteY="801dp" />
+                    tools:layout_editor_absoluteY="794dp" />
 
                 <TextView
                     android:id="@+id/unitext"
@@ -498,11 +497,11 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_begin="172dp"
-                    tools:layout_editor_absoluteY="681dp"
+                    tools:layout_editor_absoluteY="674dp"
                     tools:layout_editor_absoluteX="180dp" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
@@ -523,7 +522,7 @@
                         android:text="remaining tries" />
 
                     <ProgressBar
-                        android:id="@+id/ProgressBarPark"
+                        android:id="@+id/ProgressBarUni"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -536,7 +535,7 @@
                     android:id="@+id/guideline14"
                     app:layout_constraintGuide_begin="217dp"
                     android:orientation="horizontal"
-                    tools:layout_editor_absoluteY="898dp"
+                    tools:layout_editor_absoluteY="891dp"
                     tools:layout_editor_absoluteX="8dp" />
 
             </android.support.constraint.ConstraintLayout>
