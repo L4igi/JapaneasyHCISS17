@@ -1,6 +1,7 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 /**
@@ -18,6 +20,7 @@ import android.widget.ImageButton;
 public class Homefragment extends Fragment {
     ImageButton parkDictB, uniDictB, restDictB,
                 parkLearnB, uniLearnB, restLearnB;
+    TextView freeParkUnitsView, freeRestUnitsView, freeUniUnitsView;
 
     public Homefragment() {
         // Required empty public constructor
@@ -30,6 +33,10 @@ public class Homefragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_homefragment, container, false);
 
+        freeParkUnitsView = (TextView) view.findViewById(R.id.LernversuchePark);
+        freeRestUnitsView = (TextView) view.findViewById(R.id.LernversucheRestaurant);
+        freeUniUnitsView = (TextView) view.findViewById(R.id.LernversucheUni);
+
         parkDictB = (ImageButton) view.findViewById(R.id.ParkDicitonaryButton);
         parkLearnB = (ImageButton) view.findViewById(R.id.ParkLearnButton);
 
@@ -38,6 +45,13 @@ public class Homefragment extends Fragment {
 
         uniDictB = (ImageButton) view.findViewById(R.id.UniversityDictionaryButton);
         uniLearnB = (ImageButton) view.findViewById(R.id.UniversityLearnButton);
+
+    //    SharedPreferences settings = MainActivity.settings;
+        SharedPreferences settings = getActivity().getSharedPreferences(MainActivity.PREFS_NAME, 0);
+
+        freeParkUnitsView.setText(settings.getString(MainActivity.uniFree, "0"));
+        freeRestUnitsView.setText(settings.getString(MainActivity.restFree, "0"));
+        freeUniUnitsView.setText(settings.getString(MainActivity.uniFree, "0"));
 
         parkDictB.setOnClickListener(new View.OnClickListener() {
             @Override
