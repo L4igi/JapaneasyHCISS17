@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity
                 double dRest = currentLocation.distanceTo(poiList.restaurant);
                 double dUni = currentLocation.distanceTo(poiList.uni);
 
-                SharedPreferences.Editor editor = settings.edit();
+/*                SharedPreferences.Editor editor = settings.edit();
                 if(dPark < distThr) {
                     // entered park
                     editor.putInt(parkFree, freeUnitsPreVisit);
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity
                     // entered university
                     editor.putInt(uniFree, freeUnitsPreVisit);
                 }
-                editor.commit();
+                editor.commit();*/
             }
 
             @Override

@@ -13,6 +13,7 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        android:gravity="center"/>
 
 </LinearLayout>

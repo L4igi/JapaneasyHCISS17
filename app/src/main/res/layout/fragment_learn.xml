@@ -32,7 +32,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.47"
         android:background="#FAFAFA"
-        tools:layout_editor_absoluteY="240dp"
+        tools:layout_editor_absoluteY="274dp"
         tools:layout_editor_absoluteX="0dp" />
 
     <android.support.v7.widget.CardView
@@ -59,8 +59,8 @@
             <Button
                 android:id="@+id/KanjiInput"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
@@ -70,10 +70,10 @@
                 android:gravity="center"
                 android:text="Japnease Text"
                 android:textSize="80dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline3"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <TextView
                 android:id="@+id/Nexttxt"
@@ -90,7 +90,9 @@
                 app:layout_constraintVertical_bias="0.9"
                 app:layout_constraintHorizontal_bias="0.9"
                 android:textColor="@android:color/white"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
@@ -109,7 +111,8 @@
         app:layout_constraintRight_toLeftOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.3" />
 
     <TextView
         android:id="@+id/textView7"
@@ -125,7 +128,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0.7" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -205,6 +209,7 @@
                 android:layout_weight="1"
                 android:text="RadioButton"
                 android:layout_margin="2dp"
+
                 />
 
             <RadioButton
@@ -230,16 +235,18 @@
         android:layout_width="48dp"
         android:layout_height="43dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
         android:onClick="showDialog"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintLeft_toRightOf="@+id/textView6"
         app:layout_constraintRight_toLeftOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.75"
         app:srcCompat="@drawable/helpimg" />
 
 </android.support.constraint.ConstraintLayout>
