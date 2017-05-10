@@ -127,6 +127,8 @@ public class MainActivity extends AppCompatActivity
                 double dRest = currentLocation.distanceTo(poiList.restaurant);
                 double dUni = currentLocation.distanceTo(poiList.uni);
 
+                
+
 /*                SharedPreferences.Editor editor = settings.edit();
                 if(dPark < distThr) {
                     // entered park
@@ -140,6 +142,7 @@ public class MainActivity extends AppCompatActivity
                 }
                 editor.commit();*/
             }
+
 
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
