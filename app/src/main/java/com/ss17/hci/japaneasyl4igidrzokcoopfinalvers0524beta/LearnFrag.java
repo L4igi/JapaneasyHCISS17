@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +31,7 @@ import static com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta.MainActivity
 //TODO: Massively prettify Interface
 public class LearnFrag extends Fragment {
     Button kanji;
+    TextView nexttext;
     RadioGroup meanings;
     RadioGroup pronounciations;
     RadioButton[] means = new RadioButton[3];
@@ -61,6 +63,7 @@ public class LearnFrag extends Fragment {
 
         final View view =inflater.inflate(R.layout.fragment_learn, container, false);
         kanji = (Button) view.findViewById(R.id.KanjiInput);
+        nexttext = (TextView) view.findViewById(R.id.Nexttxt);
         meanings = (RadioGroup) view.findViewById(R.id.meaningGroup);
         pronounciations = (RadioGroup) view.findViewById(R.id.pronounciationGroup);
         means[0] = (RadioButton) view.findViewById(R.id.translatebutton1);
@@ -179,26 +182,26 @@ public class LearnFrag extends Fragment {
         //TODO: fix colors (change not reflected in interface and colors picked randomly)
         if(chosenMeaning == corrMeaning) {
             Log.d("Testing feedback", "Should assign corrColor");
-            checkedM.setBackgroundColor(Color.GREEN);
+            checkedM.setBackgroundResource(R.drawable.radioanserright);
         } else {
             Log.d("Testing feedback", "Should assign failColor");
-            checkedM.setBackgroundColor(Color.RED);
-            corrM.setBackgroundColor(Color.GREEN);
+            checkedM.setBackgroundResource(R.drawable.radioanswerwrong);
+            corrM.setBackgroundResource(R.drawable.radioanserright);
         }
         if(chosenPronunciation == corrPronunciation) {
-            checkedP.setBackgroundColor(Color.GREEN);
+            checkedP.setBackgroundResource(R.drawable.radioanserright);
         } else {
-            checkedP.setBackgroundColor(Color.RED);
-            corrP.setBackgroundColor(Color.GREEN);
+            checkedP.setBackgroundResource(R.drawable.radioanswerwrong);
+            corrP.setBackgroundResource(R.drawable.radioanserright);
         }
         if(chosenPronunciation == corrPronunciation && chosenMeaning == corrMeaning) {
-            kanji.setBackgroundColor(Color.GREEN);
+            kanji.setBackgroundResource(R.drawable.radioanserright);
         }else {
-            kanji.setBackgroundColor(Color.RED);
+            kanji.setBackgroundResource(R.drawable.radioanswerwrong);
             //TODO: Ändere freiversuche
         }
 
-        kanji.setText("Next ->");
+        nexttext.setText("Next ->");
 
         feedBackGiven = true;
     }

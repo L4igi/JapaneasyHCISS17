@@ -129,7 +129,7 @@ public class Homefragment extends Fragment {
                 } else {
                     Log.i("HomeFrag", "onClick parkLearnB else "+String.valueOf(settings.getInt(MainActivity.parkFree, 0)));
 
-                    Toast toast = Toast.makeText(getActivity(), "No tries remaining!\nVisit Votivpark", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity(), "No tries remaining!\nVisit Votivpark", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                     toast.show();
                 }
@@ -153,7 +153,7 @@ public class Homefragment extends Fragment {
                 } else {
                     Log.i("HomeFrag", "onClick parkLearnB else "+String.valueOf(settings.getInt(MainActivity.parkFree, 0)));
 
-                    Toast toast = Toast.makeText(getActivity(), "No tries remaining!\nVisit Gagarin", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity(), "No tries remaining!\nVisit Gagarin", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                     toast.show();
                 }
@@ -177,7 +177,7 @@ public class Homefragment extends Fragment {
                 } else {
                     Log.i("HomeFrag", "onClick parkLearnB else "+String.valueOf(settings.getInt(MainActivity.parkFree, 0)));
 
-                    Toast toast = Toast.makeText(getActivity(), "No tries remaining!\nVisit Währingerstr. 29", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity(), "No tries remaining!\nVisit Währingerstr. 29", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                     toast.show();
                 }
