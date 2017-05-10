@@ -219,4 +219,8 @@ public class Homefragment extends Fragment {
         super.onResume();
         Log.i("Homefragment", "onResume()");
     }
+
+
+
+
 }

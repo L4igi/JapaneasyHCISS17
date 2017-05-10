@@ -1,6 +1,7 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
@@ -31,6 +32,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.R.attr.value;
 import static android.R.id.toggle;
 
 public class MainActivity extends AppCompatActivity
@@ -201,15 +203,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        setTitle("Nearby");
-
-
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+        MainActivity.this.startActivity(myIntent);
     }
 
 
