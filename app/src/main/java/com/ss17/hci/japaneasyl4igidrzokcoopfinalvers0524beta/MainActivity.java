@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,13 +33,13 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     public static final String PREFS_NAME = "japaneasyPrefs";
-    protected static SharedPreferences settings = null;
+    protected SharedPreferences settings = null;
 
     public static final String parkFree = "park_free",
                                 restFree = "rest_free",
                                 uniFree = "uni_free";
 
-    public static final int freeUnitsPreVisit = 50;
+    public static final int freeUnitsPerVisit = 50;
 
     public static final CharacterContents allChars = new CharacterContents();
     private static final POIList poiList = new POIList();
@@ -121,18 +122,25 @@ public class MainActivity extends AppCompatActivity
                 double dRest = currentLocation.distanceTo(poiList.restaurant);
                 double dUni = currentLocation.distanceTo(poiList.uni);
 
+                ProgressBar progressBar = null;
+
                 SharedPreferences.Editor editor = settings.edit();
                 if(dPark < distThr) {
                     // entered park
-                    editor.putInt(parkFree, freeUnitsPreVisit);
+                    editor.putInt(parkFree, freeUnitsPerVisit);
+                    progressBar = (ProgressBar) findViewById(R.id.ProgressBarPark);
                 } else if(dRest < distThr) {
                     // entered restaurant
-                    editor.putInt(restFree, freeUnitsPreVisit);
+                    editor.putInt(restFree, freeUnitsPerVisit);
+                    progressBar = (ProgressBar) findViewById(R.id.ProgressBarrestaurant);
                 } else if(dUni < distThr) {
                     // entered university
-                    editor.putInt(uniFree, freeUnitsPreVisit);
+                    editor.putInt(uniFree, freeUnitsPerVisit);
+                    progressBar = (ProgressBar) findViewById(R.id.ProgressBarUni);
                 }
+                progressBar.setProgress(100);
                 editor.commit();
+                // TODO: make toast
             }
 
             @Override

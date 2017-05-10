@@ -54,9 +54,9 @@ public class Homefragment extends Fragment {
 
         final SharedPreferences settings = getActivity().getSharedPreferences(MainActivity.PREFS_NAME, 0);
 
-        freeParkUnits.setProgress(settings.getInt(MainActivity.parkFree, 0));
-        freeRestUnits.setProgress(settings.getInt(MainActivity.restFree, 0));
-        freeUniUnits.setProgress(settings.getInt(MainActivity.uniFree, 0));
+        freeParkUnits.setProgress(settings.getInt(MainActivity.parkFree, 0)/MainActivity.freeUnitsPerVisit * 100);
+        freeRestUnits.setProgress(settings.getInt(MainActivity.restFree, 0)/MainActivity.freeUnitsPerVisit * 100);
+        freeUniUnits.setProgress(settings.getInt(MainActivity.uniFree, 0)/MainActivity.freeUnitsPerVisit * 100);
 
         parkDictB.setOnClickListener(new View.OnClickListener() {
             @Override
