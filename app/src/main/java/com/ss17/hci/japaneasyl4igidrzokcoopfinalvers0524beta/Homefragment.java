@@ -54,9 +54,31 @@ public class Homefragment extends Fragment {
 
         final SharedPreferences settings = getActivity().getSharedPreferences(MainActivity.PREFS_NAME, 0);
 
-        freeParkUnits.setProgress(settings.getInt(MainActivity.parkFree, 0)/MainActivity.freeUnitsPerVisit * 100);
+/*        freeParkUnits.setProgress(settings.getInt(MainActivity.parkFree, 0)/MainActivity.freeUnitsPerVisit * 100);
         freeRestUnits.setProgress(settings.getInt(MainActivity.restFree, 0)/MainActivity.freeUnitsPerVisit * 100);
-        freeUniUnits.setProgress(settings.getInt(MainActivity.uniFree, 0)/MainActivity.freeUnitsPerVisit * 100);
+        freeUniUnits.setProgress(settings.getInt(MainActivity.uniFree, 0)/MainActivity.freeUnitsPerVisit * 100);*/
+        int parkFree = settings.getInt(MainActivity.parkFree, 0);
+        int restFree = settings.getInt(MainActivity.restFree, 0);
+        int uniFree  = settings.getInt(MainActivity.uniFree, 0);
+
+        ProgressBar parkRemaining = (ProgressBar) view.findViewById(R.id.ProgressBarPark);
+        ProgressBar restRemaining = (ProgressBar) view.findViewById(R.id.ProgressBarrestaurant);
+        ProgressBar uniRemaining = (ProgressBar) view.findViewById(R.id.ProgressBarUni);
+
+        parkRemaining.setProgress(parkFree*100/MainActivity.freeUnitsPerVisit);
+        restRemaining.setProgress(restFree*100/MainActivity.freeUnitsPerVisit);
+        uniRemaining.setProgress(uniFree*100/MainActivity.freeUnitsPerVisit);
+
+        TextView parkRemainingText = (TextView) view.findViewById(R.id.parkprogresstxt);
+        TextView restRemainingText = (TextView) view.findViewById(R.id.restaurantprogresstxt);
+        TextView uniRemainingText = (TextView) view.findViewById(R.id.uniprogresstxt);
+
+        parkRemainingText.setText(MainActivity.remainingTriesText+
+                String.valueOf(parkFree)+"/"+String.valueOf(MainActivity.freeUnitsPerVisit)+")");
+        restRemainingText.setText(MainActivity.remainingTriesText+
+                String.valueOf(restFree)+"/"+String.valueOf(MainActivity.freeUnitsPerVisit)+")");
+        uniRemainingText.setText(MainActivity.remainingTriesText+
+                String.valueOf(uniFree)+"/"+String.valueOf(MainActivity.freeUnitsPerVisit)+")");
 
         parkDictB.setOnClickListener(new View.OnClickListener() {
             @Override

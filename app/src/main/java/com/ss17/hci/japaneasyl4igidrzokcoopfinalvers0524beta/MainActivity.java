@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -16,10 +17,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity
     public static final String parkFree = "park_free",
                                 restFree = "rest_free",
                                 uniFree = "uni_free";
+    public static final String remainingTriesText = "remaining tries (";
 
     public static final int freeUnitsPerVisit = 50;
 
@@ -47,6 +52,8 @@ public class MainActivity extends AppCompatActivity
 
     private ActionBarDrawerToggle toggle;
 
+    private Location lastLocation = null;
+
 
 
     @Override
@@ -55,7 +62,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
 
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
 
         final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -66,7 +77,6 @@ public class MainActivity extends AppCompatActivity
                 if(slideOffset != 0.0) {
                     Log.i("MainAcitvity", "onDrawerSlide(); offset != 0 "+String.valueOf(slideOffset));
                 //    Log.i("MainActivity", "Navigation Mode=="+String.valueOf(getActionBar().getNavigationMode()));
-                    settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
                     String name = settings.getString(SettingsFrag.USER_NAME, null);
                     if(name == null)
                         name = "Name";
@@ -118,29 +128,46 @@ public class MainActivity extends AppCompatActivity
             public void onLocationChanged(Location currentLocation) {
                 Log.i("LOCATION_CHANGED", currentLocation.toString());
 
+                if(lastLocation == null)
+                    lastLocation = currentLocation;
+
                 double dPark = currentLocation.distanceTo(poiList.park);
                 double dRest = currentLocation.distanceTo(poiList.restaurant);
                 double dUni = currentLocation.distanceTo(poiList.uni);
 
                 ProgressBar progressBar = null;
+                TextView remainingText = null;
 
                 SharedPreferences.Editor editor = settings.edit();
                 if(dPark < distThr) {
                     // entered park
                     editor.putInt(parkFree, freeUnitsPerVisit);
                     progressBar = (ProgressBar) findViewById(R.id.ProgressBarPark);
+                    remainingText = (TextView) findViewById(R.id.parkprogresstxt);
                 } else if(dRest < distThr) {
                     // entered restaurant
                     editor.putInt(restFree, freeUnitsPerVisit);
                     progressBar = (ProgressBar) findViewById(R.id.ProgressBarrestaurant);
+                    remainingText = (TextView) findViewById(R.id.restaurantprogresstxt);
                 } else if(dUni < distThr) {
                     // entered university
                     editor.putInt(uniFree, freeUnitsPerVisit);
                     progressBar = (ProgressBar) findViewById(R.id.ProgressBarUni);
+                    remainingText = (TextView) findViewById(R.id.uniprogresstxt);
                 }
-                progressBar.setProgress(100);
+                if(progressBar != null) {
+                    progressBar.setProgress(100);
+                    if(lastLocation.distanceTo(currentLocation)<3*distThr) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "You have got new tries", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                        toast.show();
+                    }
+                }
+                if(remainingText != null)
+                    remainingText.setText(MainActivity.remainingTriesText+
+                            String.valueOf(MainActivity.freeUnitsPerVisit)+"/"+String.valueOf(MainActivity.freeUnitsPerVisit)+")");
                 editor.commit();
-                // TODO: make toast
+                lastLocation = currentLocation;
             }
 
             @Override
@@ -161,7 +188,6 @@ public class MainActivity extends AppCompatActivity
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
     }
-
 
 
     @Override

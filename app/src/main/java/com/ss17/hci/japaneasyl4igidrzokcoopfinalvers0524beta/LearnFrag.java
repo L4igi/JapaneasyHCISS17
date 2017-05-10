@@ -1,6 +1,7 @@
 package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,6 +52,8 @@ public class LearnFrag extends Fragment {
     String chosenPronunciation = null;
     boolean feedBackGiven = false;
 
+    boolean allowedToProceed = true;
+
 
     public LearnFrag() {
         // Required empty public constructor
@@ -57,7 +62,7 @@ public class LearnFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        NavigationView navView = (NavigationView) getActivity().findViewById(R.id.nav_view);
+        final NavigationView navView = (NavigationView) getActivity().findViewById(R.id.nav_view);
         navView.setCheckedItem(R.id.nav_lernen);
 
 
@@ -73,7 +78,7 @@ public class LearnFrag extends Fragment {
         pros[1] = (RadioButton) view.findViewById(R.id.aussprachebutton2);
         pros[2] = (RadioButton) view.findViewById(R.id.aussprachebutton3);
 
-        Bundle bundle = getArguments();
+        final Bundle bundle = getArguments();
         try {
             kanjiGroup = bundle.getInt(PACKAGE);
         } catch (Exception e) {
@@ -117,7 +122,12 @@ public class LearnFrag extends Fragment {
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 RadioButton checked = (RadioButton) view.findViewById(checkedId);
                 chosenMeaning = checked.getText().toString();
-                if(chosenPronunciation != null) {
+                if(chosenPronunciation != null && !feedBackGiven) {
+                    // meanings.setClickable(false) doesn't work!
+                    for(RadioButton button : means)
+                        button.setClickable(false);
+                    for(RadioButton button : pros)
+                        button.setClickable(false);
                     giveFeedback();
                 }
             }
@@ -128,7 +138,12 @@ public class LearnFrag extends Fragment {
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 RadioButton checked = (RadioButton) view.findViewById(checkedId);
                 chosenPronunciation = checked.getText().toString();
-                if(chosenMeaning != null) {
+                if(chosenMeaning != null && !feedBackGiven) {
+                    // meanings.setClickable(false) doesn't work!
+                    for(RadioButton button : means)
+                        button.setClickable(false);
+                    for(RadioButton button : pros)
+                        button.setClickable(false);
                     giveFeedback();
                 }
             }
@@ -137,7 +152,7 @@ public class LearnFrag extends Fragment {
         kanji.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(feedBackGiven) {
+                if(feedBackGiven && allowedToProceed) {
                     //TODO: Von Freiversuchen abhängig machen
                     switch (kanjiGroup){
                         case 0:
@@ -165,6 +180,11 @@ public class LearnFrag extends Fragment {
                     FragmentTransaction ft = fragmentManager.beginTransaction();
                     ft.replace(R.id.fragment, nextKanjiSlide);
                     ft.commit();
+                } else if(!allowedToProceed) {
+                    Toast toast = Toast.makeText(getActivity(), "No tries remaining", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.show();
+                 //   throw new RuntimeException("no tries remaining");
                 } else {
                     //TODO: Highlight Help Button (temporarily replace with another pic?)
                     Log.d("Testing", "Niccce");
@@ -199,6 +219,27 @@ public class LearnFrag extends Fragment {
         }else {
             kanji.setBackgroundResource(R.drawable.radioanswerwrong);
             //TODO: Ändere freiversuche
+            SharedPreferences settings = getActivity().getSharedPreferences(MainActivity.PREFS_NAME, 0);
+            SharedPreferences.Editor editor = settings.edit();
+            int remaining = 0;
+            switch (kanjiGroup) {
+                case 1: remaining = settings.getInt(MainActivity.parkFree, 0);
+                    remaining--;
+                    editor.putInt(MainActivity.parkFree, remaining);
+                    break;
+                case 2: remaining = settings.getInt(MainActivity.restFree, 0);
+                    remaining--;
+                    editor.putInt(MainActivity.restFree, remaining);
+                    break;
+                case 3: remaining = settings.getInt(MainActivity.uniFree, 0);
+                    remaining--;
+                    editor.putInt(MainActivity.uniFree, remaining);
+                    break;
+                default: remaining = 1;
+            }
+            if(remaining == 0)
+                allowedToProceed = false;
+            editor.commit();
         }
 
         nexttext.setText("Next ->");
