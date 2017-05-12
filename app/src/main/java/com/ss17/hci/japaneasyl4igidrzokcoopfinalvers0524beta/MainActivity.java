@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -23,17 +22,11 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import static android.R.attr.value;
-import static android.R.id.toggle;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -55,8 +48,6 @@ public class MainActivity extends AppCompatActivity
     private ActionBarDrawerToggle toggle;
 
     private Location lastLocation = null;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +97,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onDrawerStateChanged(int newState) {
                 Log.i("onDrawerStateChanged", "State:"+String.valueOf(newState));
-                // TODO: could improve performace (vs. onDrawerSlide)
+                // could improve performace (vs. onDrawerSlide)
 
             }
 
@@ -191,24 +182,17 @@ public class MainActivity extends AppCompatActivity
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
     }
 
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         toggle.syncState();
     }
 
-
-
-
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
         MainActivity.this.startActivity(myIntent);
     }
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -276,10 +260,7 @@ public class MainActivity extends AppCompatActivity
         public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
             btnGotIT = (Button) view.findViewById(R.id.btngotIt);
-
-
             btnGotIT.setOnClickListener(this);
-
         }
 
         @Nullable
@@ -297,7 +278,4 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
-
-
-
 }

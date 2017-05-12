@@ -2,7 +2,6 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.NavigationView;

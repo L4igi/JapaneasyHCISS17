@@ -158,7 +158,6 @@ public class SettingsFrag extends Fragment {
             }
         });
         return view;
-
     }
 
     @Override
@@ -187,17 +186,5 @@ public class SettingsFrag extends Fragment {
             case 9: profilePic.setImageResource(R.drawable.pic_9); break;
             default: profilePic.setImageResource(R.drawable.pic_1); break;
         }
-
     }
-
-/*    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i("SettingsFrag", "onPause()");
-        String name = nameText.getText().toString();
-        Log.i("TAG: Name changed to:", name);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putString(USER_NAME, name);
-        editor.commit();
-    }*/
 }

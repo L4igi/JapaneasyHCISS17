@@ -2,7 +2,6 @@ package com.ss17.hci.japaneasyl4igidrzokcoopfinalvers0524beta;
 
 import android.util.Log;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -690,5 +689,4 @@ class CharacterContents {
         LearnSelection result = new LearnSelection(mainChar, randCorrM, randCorrP, wrongM, wrongP);
         return result;
     }
-
 }
